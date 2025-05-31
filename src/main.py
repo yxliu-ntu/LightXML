@@ -1,7 +1,7 @@
 import sys
 import random
 import numpy as np
-from apex import amp
+#from apex import amp
 from model import LightXML
 
 from sklearn.model_selection import train_test_split
@@ -60,7 +60,7 @@ def train(model, df, label_map):
         ]
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.lr)#, eps=1e-8)
         
-    model, optimizer = amp.initialize(model, optimizer, opt_level="O1")
+    #model, optimizer = amp.initialize(model, optimizer, opt_level="O1")
 
     max_only_p5 = 0
     for epoch in range(0, args.epoch+5):

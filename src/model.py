@@ -2,7 +2,7 @@ import tqdm
 import time
 import cProfile
 import numpy as np
-from apex import amp
+#from apex import amp
 
 import torch
 from torch import nn
@@ -264,8 +264,9 @@ class LightXML(nn.Module):
                     loss /= self.update_count
                     train_loss += loss.item()
 
-                    with amp.scale_loss(loss, optimizer) as scaled_loss:
-                        scaled_loss.backward()
+                    #with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    #    scaled_loss.backward()
+                    loss.backward()
     
                     if step % self.update_count == 0:
                         optimizer.step()
